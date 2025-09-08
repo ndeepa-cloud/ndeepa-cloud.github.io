@@ -9,93 +9,90 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#06070d;--text:#e6e9ef;--muted:#9aa4b2;
-      --brand:#6d28d9;--brand2:#06b6d4;--card:#0e1320;--ring:rgba(109,40,217,.35);
+      --bg:#06070d;--text:#e6e9ef;--muted:#a1aab8;
+      --brand:#7c3aed;--brand2:#06b6d4;--card:#0d1220;--ring:rgba(124,58,237,.35);
     }
     *{box-sizing:border-box} html,body{margin:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
 
-    /* background graphics */
+    /* Background ambience */
     .bg-wrap{position:fixed;inset:0;z-index:-1;overflow:hidden}
     .blob{position:absolute;filter:blur(60px);opacity:.35;mix-blend-mode:screen;border-radius:50%}
     .b1{width:520px;height:520px;background:#4f46e5;left:-120px;top:-80px;animation:float 10s ease-in-out infinite alternate}
-    .b2{width:600px;height:600px;background:#06b6d4;right:-160px;top:-60px;animation:float 12s ease-in-out 1.2s infinite alternate}
-    .b3{width:500px;height:500px;background:#22d3ee;left:20%;bottom:-160px;animation:float 11s ease-in-out .8s infinite alternate}
+    .b2{width:620px;height:620px;background:#06b6d4;right:-160px;top:-60px;animation:float 12s ease-in-out 1.2s infinite alternate}
+    .b3{width:540px;height:540px;background:#22d3ee;left:20%;bottom:-180px;animation:float 11s ease-in-out .8s infinite alternate}
     .noise{position:absolute;inset:-50%;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>') repeat;mix-blend-mode:overlay;opacity:.35}
     @keyframes float{from{transform:translateY(0)}to{transform:translateY(-30px)}}
 
-    /* header */
-    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px);
-      background:linear-gradient(180deg, rgba(6,7,13,.8), rgba(6,7,13,.35));border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(6,7,13,.75), rgba(6,7,13,.25));backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
     .container{max-width:1160px;margin:0 auto;padding:18px 22px}
     .nav{display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 0deg, var(--brand), var(--brand2), var(--brand));box-shadow:0 10px 30px var(--ring);animation:float 3.5s ease-in-out infinite alternate}
+    .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 0deg, var(--brand), var(--brand2), var(--brand));box-shadow:0 12px 28px var(--ring)}
     .brand h1{margin:0;font-size:18px;font-weight:700}
-    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(135deg, var(--brand), var(--brand2));font-weight:700;border:1px solid rgba(255,255,255,.06);box-shadow:0 6px 18px var(--ring);color:var(--text);text-decoration:none}
+    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(135deg, var(--brand), var(--brand2));font-weight:700;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 26px var(--ring);color:var(--text);text-decoration:none}
 
-    /* hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:64px 0}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:center;padding:68px 0}
     .kicker{color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:12px}
-    .title{font-size:54px;line-height:1.05;margin:10px 0 16px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg, #ffffff, #93c5fd 30%, #a78bfa 60%, #22d3ee 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{font-size:17px;color:#cdd6e1;max-width:680px}
+    .title{font-size:56px;line-height:1.02;margin:10px 0 16px;font-weight:800;letter-spacing:-.02em;
+      background:linear-gradient(90deg,#fff, #a5b4fc 40%, #a78bfa 70%, #22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:18px;color:#d5dbea;max-width:700px}
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
     .chip{border:1px solid rgba(255,255,255,.12);background:rgba(14,19,32,.7);padding:8px 12px;border-radius:9999px;font-size:12px}
 
+    /* Tilt stat card */
     .tilt{perspective:1200px}
-    .tilt-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px;height:280px;transform-style:preserve-3d;transition:transform .2s ease}
+    .tilt-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 26px 70px rgba(0,0,0,.5);padding:22px;height:300px;transform-style:preserve-3d;transition:transform .2s ease}
     .tilt-card:hover{transform:rotateX(6deg) rotateY(-6deg)}
     .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
     .stat{background:rgba(14,19,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
     .num{font-size:28px;font-weight:800}.lbl{font-size:12px;color:var(--muted)}
 
-    /* marquee */
     .marquee-wrap{overflow:hidden;border:1px solid rgba(255,255,255,.06);border-radius:14px;background:rgba(14,19,32,.75);margin:20px 0}
     .marquee{display:flex;gap:32px;animation:scroll 18s linear infinite;padding:12px}
     .pill{padding:8px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);white-space:nowrap;color:#e5e7eb}
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* sections */
+    /* Sections */
     section{padding:18px 0 64px}
     .section-title{font-size:22px;margin:0 0 16px}
 
-    /* projects slider */
+    /* Projects slider */
     .slider-wrap{position:relative}
     .slider{display:flex;gap:18px;overflow:hidden}
-    .card{min-width:340px;max-width:360px;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
-    .thumb{height:170px;border-radius:12px;background:linear-gradient(135deg, rgba(124,58,237,.35), rgba(6,182,212,.35));border:1px solid rgba(255,255,255,.12);position:relative;overflow:hidden}
+    .card{min-width:340px;max-width:360px;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 22px 50px rgba(0,0,0,.45)}
+    .thumb{height:178px;border-radius:12px;background:radial-gradient(1200px 450px at -10% -10%, rgba(124,58,237,.38), transparent 60%), radial-gradient(1200px 450px at 110% 110%, rgba(6,182,212,.38), transparent 60%);border:1px solid rgba(255,255,255,.12);position:relative;overflow:hidden}
     .thumb::after{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg, transparent, rgba(255,255,255,.12), transparent);animation:spin 6s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
-    .badge{font-size:11px;color:#a5b4fc;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.35);padding:4px 8px;border-radius:9999px}
+    .badge{font-size:11px;color:#c7d2fe;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.35);padding:4px 8px;border-radius:9999px}
     .card h3{margin:4px 0 2px;font-size:18px}
     .card p{margin:0;color:#cbd5e1;font-size:14px}
     .actions{display:flex;gap:10px;margin-top:auto}
     .button{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03);color:var(--text);text-decoration:none}
     .button.primary{background:linear-gradient(135deg, var(--brand), var(--brand2));border-color:transparent;font-weight:700}
     .controls{display:flex;gap:10px;position:absolute;right:0;top:-40px}
-    .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);display:grid;place-items:center;color:var(--text)}
+    .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);display:grid;place-items:center;color:var(--text)}
 
-    /* contact */
+    /* Contact */
     .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .contact{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
 
     footer{padding:32px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
 
-    /* responsive */
+    /* Responsive */
     @media (max-width:980px){.hero{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
     @media (max-width:520px){.title{font-size:40px}.card{min-width:88%}.stat-grid{grid-template-columns:1fr 1fr}}
     @media (prefers-reduced-motion: reduce){.b1,.b2,.b3,.marquee{animation:none}.tilt-card:hover{transform:none}}
-
-    /* slides modal tweaks (buttons reuse existing styles inline) */
   </style>
 </head>
 <body>
-  <!-- background layers -->
+  <!-- Background -->
   <div class="bg-wrap">
     <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="noise"></div>
   </div>
 
-  <!-- header -->
+  <!-- Header -->
   <header>
     <div class="container nav">
       <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Nithin Deepa</h1></div>
@@ -107,7 +104,7 @@
   </header>
 
   <main class="container">
-    <!-- hero -->
+    <!-- Hero -->
     <section class="hero">
       <div>
         <div class="kicker">COMPUTER SCIENCE • CLASS OF 2027</div>
@@ -131,12 +128,12 @@
             <div class="stat"><div class="num">3</div><div class="lbl">Stacks (Py/Java/SQL)</div></div>
             <div class="stat"><div class="num">2026</div><div class="lbl">Internship Target</div></div>
           </div>
-          <p style="margin-top:16px;color:#cbd5e1">Hover this card — subtle 3D tilt and glass effect; shows polish without being flashy.</p>
+          <p style="margin-top:16px;color:#cbd5e1">Hover this card — subtle 3D tilt and glass effect; polish without flash.</p>
         </div>
       </div>
     </section>
 
-    <!-- projects -->
+    <!-- Projects -->
     <section id="projects">
       <h3 class="section-title">Featured Projects</h3>
       <div class="slider-wrap">
@@ -171,7 +168,7 @@
             <div class="thumb" aria-hidden="true"></div>
             <span class="badge">Java • OOP</span>
             <h3>Java OOP Projects</h3>
-            <p>Clean OOP examples (shapes, calculators, loan) with unitable CLI.</p>
+            <p>Clean OOP examples (shapes, calculators, loan) with CLI.</p>
             <div class="actions">
               <a class="button primary" href="https://github.com/ndeepa-cloud/java-oop-project" target="_blank" rel="noopener">View Code</a>
               <a class="button" href="https://github.com/ndeepa-cloud/java-oop-project#readme" target="_blank" rel="noopener">README</a>
@@ -203,12 +200,12 @@
       </div>
     </section>
 
-    <!-- contact -->
+    <!-- Contact -->
     <section>
       <h3 class="section-title">Contact</h3>
       <div class="contact-grid">
-        <div class="contact"><strong>Email</strong><br><a href="mailto:9381nithins9@gmail.com">9381nithins9@gmail.com</a></div>
-        <div class="contact"><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/" target="_blank" rel="noopener">Add your link</a></div>
+        <div class="contact"><strong>Email</strong><br><a href="mailto:deepanithinroy9@gmail.com">deepanithinroy9@gmail.com</a></div>
+        <div class="contact"><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/nithin-deepa-a246a0287/" target="_blank" rel="noopener">linkedin.com/in/nithin-deepa-a246a0287</a></div>
         <div class="contact"><strong>GitHub</strong><br><a href="https://github.com/ndeepa-cloud" target="_blank" rel="noopener">github.com/ndeepa-cloud</a></div>
       </div>
     </section>
@@ -219,14 +216,17 @@
   <!-- Slides (presentation mode) -->
   <div id="slidesModal" aria-hidden="true"
        style="position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);display:none;z-index:80;">
-    <div style="position:absolute;inset:0;display:grid;place-items:center;">
-      <div style="width:min(1100px,92vw);height:min(640px,80vh);background:#0b0f17;
+    <!-- Click outside to close -->
+    <div id="slidesBackdrop" style="position:absolute;inset:0;"></div>
+
+    <div style="position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;">
+      <div style="pointer-events:auto;width:min(1100px,92vw);height:min(640px,80vh);background:#0b0f17;
                   border:1px solid rgba(255,255,255,.12);border-radius:16px;
                   box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:12px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="position:absolute;top:12px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;z-index:2;">
           <div style="color:#9aa4b2;font-size:14px">Portfolio — Slide <span id="slideNum">1</span>/<span id="slideTotal">4</span></div>
           <button id="closeSlides"
-            style="border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
+            style="border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.10);
                    color:#e6e9ef;border-radius:10px;padding:8px 12px;cursor:pointer;">Close</button>
         </div>
 
@@ -278,28 +278,27 @@
             <h2 style="margin:0;font-size:32px;">Contact</h2>
             <p style="color:#cbd5e1">Email me or connect on GitHub/LinkedIn.</p>
             <div class="contact-grid" style="max-width:820px">
-              <div class="contact"><strong>Email</strong><br><a href="mailto:9381nithins9@gmail.com">9381nithins9@gmail.com</a></div>
+              <div class="contact"><strong>Email</strong><br><a href="mailto:deepanithinroy9@gmail.com">deepanithinroy9@gmail.com</a></div>
               <div class="contact"><strong>GitHub</strong><br><a target="_blank" href="https://github.com/ndeepa-cloud">github.com/ndeepa-cloud</a></div>
-              <div class="contact"><strong>LinkedIn</strong><br><a target="_blank" href="https://www.linkedin.com/">Add your link</a></div>
+              <div class="contact"><strong>LinkedIn</strong><br><a target="_blank" href="https://www.linkedin.com/in/nithin-deepa-a246a0287/">linkedin.com/in/nithin-deepa-a246a0287</a></div>
             </div>
           </section>
         </div>
 
-        <!-- nav buttons & dots -->
+        <!-- nav & dots -->
         <button id="prevSlide"
           style="position:absolute;left:16px;top:50%;transform:translateY(-50%);
                  width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.15);
-                 background:rgba(255,255,255,.06);color:#e6e9ef;cursor:pointer">◄</button>
+                 background:rgba(255,255,255,.10);color:#e6e9ef;cursor:pointer;z-index:2">◄</button>
         <button id="nextSlide"
           style="position:absolute;right:16px;top:50%;transform:translateY(-50%);
                  width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.15);
-                 background:rgba(255,255,255,.06);color:#e6e9ef;cursor:pointer">►</button>
-        <div id="dots" style="position:absolute;left:0;right:0;bottom:18px;display:flex;gap:8px;justify-content:center;"></div>
+                 background:rgba(255,255,255,.10);color:#e6e9ef;cursor:pointer;z-index:2">►</button>
+        <div id="dots" style="position:absolute;left:0;right:0;bottom:18px;display:flex;gap:8px;justify-content:center;z-index:2"></div>
       </div>
     </div>
   </div>
 
-  <!-- scripts -->
   <script>
     // --- projects slider ---
     const scroller = document.getElementById('slider');
@@ -314,6 +313,7 @@
 
     // --- slides modal ---
     const modal = document.getElementById('slidesModal');
+    const backdrop = document.getElementById('slidesBackdrop');
     const openBtn = document.getElementById('openSlides');
     const closeBtn = document.getElementById('closeSlides');
     const track = document.getElementById('slidesTrack');
@@ -324,18 +324,30 @@
     const dotsWrap = document.getElementById('dots');
 
     const SLIDES = 4; let i = 0; slideTotal.textContent = SLIDES;
+
+    // Build dots
     for (let k=0;k<SLIDES;k++){
       const d=document.createElement('button');
-      d.style.cssText='width:8px;height:8px;border-radius:9999px;border:0;background:#384152;opacity:.7';
+      d.style.cssText='width:9px;height:9px;border-radius:9999px;border:0;background:#5b6475;opacity:.7';
       d.addEventListener('click',()=>go(k)); dotsWrap.appendChild(d);
     }
-    function paintDots(){[...dotsWrap.children].forEach((d,idx)=> d.style.opacity=(idx===i?'1':'0.6'))}
+    function paintDots(){[...dotsWrap.children].forEach((d,idx)=> d.style.opacity=(idx===i?'1':'0.55'))}
     function go(n){i=(n+SLIDES)%SLIDES; track.style.transform=`translateX(-${i*100}%)`; slideNum.textContent=i+1; paintDots()}
     function open(){ modal.style.display='block'; document.body.style.overflow='hidden'; go(0) }
     function close(){ modal.style.display='none'; document.body.style.overflow='auto' }
-    openBtn.addEventListener('click', open); closeBtn.addEventListener('click', close);
-    nextS.addEventListener('click', ()=>go(i+1)); prevS.addEventListener('click', ()=>go(i-1));
-    window.addEventListener('keydown', (e)=>{ if(modal.style.display==='block'){ if(e.key==='Escape') close(); if(e.key==='ArrowRight') go(i+1); if(e.key==='ArrowLeft') go(i-1); }});
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    nextS.addEventListener('click', ()=>go(i+1));
+    prevS.addEventListener('click', ()=>go(i-1));
+    window.addEventListener('keydown', (e)=> {
+      if(modal.style.display==='block'){
+        if(e.key==='Escape') close();
+        if(e.key==='ArrowRight') go(i+1);
+        if(e.key==='ArrowLeft') go(i-1);
+      }
+    });
   </script>
 </body>
 </html>
